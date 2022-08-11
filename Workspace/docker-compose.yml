@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+
+  publisher:
+    build:
+      context: ./../Publisher
+      dockerfile: ./../Publisher/publisher.dockerfile
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PORT: 80
+      REDIS_ADDRESS: redis:6379
+    deploy:
+      mode: replicated
+      replicas: 1
+      
+  consumer:
+    build:
+      context: ./../Consumer
+      dockerfile: ./../Consumer/consumer.dockerfile
+    restart: always
+    environment:
+      REDIS_ADDRESS: redis:6379
+      DSN: root:password@tcp(mysql:3306)/mysql
+    deploy:
+      mode: replicated
+      replicas: 1
+
+  mysql:
+    image: mysql:8-debian
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    deploy:
+      mode: replicated
+      replicas: 1    
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - 3306:3306
+ 
+  redis:
+    image: redis:alpine
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1    
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - 6379:6379

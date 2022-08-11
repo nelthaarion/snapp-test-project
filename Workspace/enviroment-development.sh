@@ -1,0 +1,13 @@
+echo setting enviroment variables;
+echo ;
+echo setting port starting...;
+export PORT=80;
+echo setting port done!;
+echo  ;
+echo setting redis address starting...;
+export REDIS_ADDRESS=localhost:6379;
+echo setting redis address done!;
+echo  ;
+echo setting mysql dsn starting...;
+export DSN=root:password@tcp\(mysql:3306\)/mysql;
+echo setting mysql dsndone!;

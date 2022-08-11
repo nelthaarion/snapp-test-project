@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "..\\Publisher"
+		},
+		{
+			"path": "..\\Consumer"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\Orphan finder"
+		},
+		{
+			"path": "..\\Crawler"
+		},
+		{
+			"path": "..\\COR"
+		}
+	],
+	"settings": {}
+}
