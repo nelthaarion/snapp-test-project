@@ -44,7 +44,7 @@ func CreateMySQLConnection(dsn string) (*sql.DB, error) {
 	for {
 		if retries < 5 {
 			db, err := sql.Open("mysql", dsn)
-			log.Println(dsn, err, db)
+			
 			if err != nil {
 				log.Println("Connection problem, retrying ...")
 				log.Println(err)
